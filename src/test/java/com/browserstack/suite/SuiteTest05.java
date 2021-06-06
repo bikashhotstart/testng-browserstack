@@ -12,7 +12,7 @@ public class SuiteTest05 extends BrowserStackTestNGTest {
 
     @Test
     public void test_05() throws Exception {
-        driver.get("https://www.google.com/ncr");
+        driver.get("https://www.hotstar.com/");
         Thread.sleep(7000);
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BrowserStack Test 05");
