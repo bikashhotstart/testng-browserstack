@@ -18,6 +18,6 @@ public class SuiteTest04 extends BrowserStackTestNGTest {
         element.submit();
         Thread.sleep(7000);
 
-        Assert.assertEquals("Hotstar Test  04 - Google Search", driver.getTitle());
+        Assert.assertEquals("Hotstar", driver.getTitle());
     }
 }

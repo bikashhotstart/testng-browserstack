@@ -16,6 +16,6 @@ public class SingleTest extends BrowserStackTestNGTest {
         element.submit();
         Thread.sleep(5000);
 
-        Assert.assertEquals("Hotstar - Google Search", driver.getTitle());
+        Assert.assertEquals("Hotstar", driver.getTitle());
     }
 }
