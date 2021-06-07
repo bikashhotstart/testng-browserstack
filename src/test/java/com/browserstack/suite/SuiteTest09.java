@@ -14,12 +14,12 @@ public class SuiteTest09 extends BrowserStackTestNGTest {
     public void test_09() throws Exception {
         driver.get("https://www.hotstar.com/");
         Thread.sleep(3000);
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("BrowserStack Test 09");
+        WebElement element = driver.findElement(By.id("searchField"));
+        element.sendKeys("Hotstar Test  09");
         Thread.sleep(3000);
         element.submit();
         Thread.sleep(3000);
 
-        Assert.assertEquals("BrowserStack Test 09 - Google Search", driver.getTitle());
+        Assert.assertEquals("Hotstar Test  09 - Google Search", driver.getTitle());
     }
 }
