@@ -11,6 +11,7 @@ public class SingleTest extends BrowserStackTestNGTest {
     @Test
     public void test() throws Exception {
         driver.get("https://www.hotstar.com/");
+        Thread.sleep(3000);
         WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
         element.submit();
