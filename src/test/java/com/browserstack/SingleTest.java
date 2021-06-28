@@ -18,6 +18,6 @@ public class SingleTest extends BrowserStackTestNGTest {
         element.sendKeys(Keys.ENTER);
         //element.submit();
         Thread.sleep(5000);
-        Assert.assertEquals("Hotstar", driver.getTitle());
+        Assert.assertEquals("Disney+ Hotstar", driver.getTitle());
     }
 }
