@@ -21,20 +21,13 @@ public class SingleTest extends BrowserStackTestNGTest {
         driver.get("https://www.hotstar.com/");
         //Declare and initialise a fluent wait
         FluentWait wait = new FluentWait(driver);
-        wait.pollingEvery(250, TimeUnit.MILLISECONDS);
-        wait.withTimeout(5000, TimeUnit.MILLISECONDS);
-        wait.ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.alertIsPresent());
 
 
         WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
         element.sendKeys(Keys.ENTER);
-        //element.submit();
-        wait.pollingEvery(250, TimeUnit.MILLISECONDS);
-        wait.withTimeout(5000, TimeUnit.MILLISECONDS);
         wait.ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.alertIsPresent());
+
         //Thread.sleep(5000);
         Assert.assertEquals("Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online", driver.getTitle());
     }
