@@ -40,6 +40,6 @@ public class SingleTest extends BrowserStackTestNGTest {
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
        // wait.ignoring(NoSuchElementException.class);
         //Thread.sleep(5000);
-        Assert.assertEquals("[Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online]", driver.getTitle());
+        Assert.assertEquals("Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online", driver.getTitle());
     }
 }
