@@ -21,7 +21,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         //Declare and initialise a fluent wait
         FluentWait wait = new FluentWait(driver);
 //Specify the timout of the wait
-        wait.withTimeout(300000, TimeUnit.MILLISECONDS);
+        wait.withTimeout(3000, TimeUnit.MILLISECONDS);
 //Sepcify polling time
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
 //Specify what exceptions to ignore
