@@ -23,28 +23,18 @@ public class SingleTest extends BrowserStackTestNGTest {
         FluentWait wait = new FluentWait(driver);
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
         wait.withTimeout(5000, TimeUnit.MILLISECONDS);
+        wait.ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.alertIsPresent());
 
-       // Thread.sleep(3000);
-        Function<WebDriver, WebElement> function = new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver arg0) {
-                System.out.println("Checking for the object!!");
-                WebElement element = arg0.findElement(By.id("searchField"));
-                if (element != null) {
-                    System.out.println("A new dynamic object is found.");
-                }
-                return element;
-            }
-        };
-        wait.until(function);
+
         WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
         element.sendKeys(Keys.ENTER);
         //element.submit();
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
         wait.withTimeout(5000, TimeUnit.MILLISECONDS);
-
-        //wait.ignoring(NoSuchElementException.class);
-        //wait.until(ExpectedConditions.alertIsPresent());
+        wait.ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.alertIsPresent());
         //Thread.sleep(5000);
         Assert.assertEquals("Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online", driver.getTitle());
     }
