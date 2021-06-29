@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.openqa.selenium.NoSuchElementException
+import org.openqa.selenium.NoSuchElementException;
 
 public class SingleTest extends BrowserStackTestNGTest {
 
