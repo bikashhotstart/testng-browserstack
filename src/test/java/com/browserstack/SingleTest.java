@@ -36,7 +36,7 @@ public class SingleTest extends BrowserStackTestNGTest {
             }
         };
         wait.until(function);
-        //WebElement element = driver.findElement(By.id("searchField"));
+        WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
         element.sendKeys(Keys.ENTER);
         //element.submit();
