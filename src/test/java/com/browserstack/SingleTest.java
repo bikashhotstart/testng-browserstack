@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.NoSuchElementException
 
 public class SingleTest extends BrowserStackTestNGTest {
 
@@ -24,7 +25,7 @@ public class SingleTest extends BrowserStackTestNGTest {
 //Sepcify polling time
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
 //Specify what exceptions to ignore
-       // wait.ignoring(NoSuchElementException.class);
+       wait.ignoring(NoSuchElementException.class);
 
 //This is how we specify the condition to wait on.
 //This is what we will explore more in this chapter
@@ -38,7 +39,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         //element.submit();
         wait.withTimeout(2000, TimeUnit.MILLISECONDS);
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
-       // wait.ignoring(NoSuchElementException.class);
+        wait.ignoring(NoSuchElementException.class);
         //Thread.sleep(5000);
         Assert.assertEquals("Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online", driver.getTitle());
     }
