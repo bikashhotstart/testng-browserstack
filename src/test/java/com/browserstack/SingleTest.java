@@ -25,13 +25,10 @@ public class SingleTest extends BrowserStackTestNGTest {
 //Sepcify polling time
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
 //Specify what exceptions to ignore
-       wait.ignoring(NoSuchElementException.class);
-
+       //wait.ignoring(NoSuchElementException.class);
 //This is how we specify the condition to wait on.
 //This is what we will explore more in this chapter
-        wait.until(ExpectedConditions.alertIsPresent());
-
-
+        //wait.until(ExpectedConditions.alertIsPresent());
        // Thread.sleep(3000);
         WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
@@ -39,8 +36,8 @@ public class SingleTest extends BrowserStackTestNGTest {
         //element.submit();
         wait.withTimeout(5000, TimeUnit.MILLISECONDS);
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
-        wait.ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.alertIsPresent());
+        //wait.ignoring(NoSuchElementException.class);
+        //wait.until(ExpectedConditions.alertIsPresent());
         //Thread.sleep(5000);
         Assert.assertEquals("Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online", driver.getTitle());
     }
