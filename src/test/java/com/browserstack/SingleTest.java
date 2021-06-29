@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.NoSuchElementException;
+import com.google.common.base.Function;
 
 public class SingleTest extends BrowserStackTestNGTest {
 
@@ -20,22 +21,28 @@ public class SingleTest extends BrowserStackTestNGTest {
         driver.get("https://www.hotstar.com/");
         //Declare and initialise a fluent wait
         FluentWait wait = new FluentWait(driver);
-//Specify the timout of the wait
-        wait.withTimeout(3000, TimeUnit.MILLISECONDS);
-//Sepcify polling time
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
-//Specify what exceptions to ignore
-       //wait.ignoring(NoSuchElementException.class);
-//This is how we specify the condition to wait on.
-//This is what we will explore more in this chapter
-        //wait.until(ExpectedConditions.alertIsPresent());
+        wait.withTimeout(5000, TimeUnit.MILLISECONDS);
+
        // Thread.sleep(3000);
-        WebElement element = driver.findElement(By.id("searchField"));
+        Function<WebDriver, WebElement> function = new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver arg0) {
+                System.out.println("Checking for the object!!");
+                WebElement element = arg0.findElement(By.id("searchField"));
+                if (element != null) {
+                    System.out.println("A new dynamic object is found.");
+                }
+                return element;
+            }
+        };
+        wait.until(function);
+        //WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
         element.sendKeys(Keys.ENTER);
         //element.submit();
-        wait.withTimeout(5000, TimeUnit.MILLISECONDS);
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
+        wait.withTimeout(5000, TimeUnit.MILLISECONDS);
+
         //wait.ignoring(NoSuchElementException.class);
         //wait.until(ExpectedConditions.alertIsPresent());
         //Thread.sleep(5000);
