@@ -1,4 +1,5 @@
 package com.browserstack;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,14 +21,18 @@ public class SingleTest extends BrowserStackTestNGTest {
 
         driver.get("https://www.hotstar.com/");
         //Declare and initialise a fluent wait
-        FluentWait wait = new FluentWait(driver);
-
-
-        WebElement element = driver.findElement(By.id("searchField"));
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
+        wait.withTimeout(Duration.ofMillis(5000))
+                .pollingEvery(Duration.ofMillis(1000))
+                .ignoring(NoSuchElementException.class);
+        WebElement element=wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.id("searchField"));
+            }
+        });
+        //WebElement element = driver.findElement(By.id("searchField"));
         element.sendKeys("Hotstar");
         element.sendKeys(Keys.ENTER);
-        wait.ignoring(NoSuchElementException.class);
-
         //Thread.sleep(5000);
         Assert.assertEquals("Disney+ Hotstar - Watch TV Shows, Movies, Live Cricket Matches & News Online", driver.getTitle());
     }
